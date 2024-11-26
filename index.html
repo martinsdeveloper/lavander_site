@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavender Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-text">
+            <h1 data-translate="website_title">Discover the Essence of Calm</h1>
+            <p>Explore our range of natural lavender products crafted with care.</p>
+            <div class="hero-buttons">
+                <a href="#shop" class="btn primary">Shop Now</a>
+                <a href="#about" class="btn secondary">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Products Section -->
+    <section id="shop" class="featured-products">
+        <h2>Our Best Sellers</h2>
+        <div class="products-grid">
+            <div class="product">
+                <img src="lavender-oil.jpg" alt="Lavender Oil">
+                <h3>Lavender Oil</h3>
+                <p>$25.00</p>
+                <button class="btn primary">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="lavender-candle.jpg" alt="Lavender Candle">
+                <h3>Lavender Candle</h3>
+                <p>$15.00</p>
+                <button class="btn primary">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="lavender-soap.jpg" alt="Lavender Soap">
+                <h3>Lavender Soap</h3>
+                <p>$10.00</p>
+                <button class="btn primary">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-us">
+        <h2>About Us</h2>
+        <p>
+            At Lavender Luxe, we believe in the power of nature to bring peace and wellness.
+            Each product is crafted with sustainably sourced lavender to help you relax and rejuvenate.
+        </p>
+        <button onclick="applyTranslations('https://martinsdeveloper.github.io/lavander_site/translations/lv.json')">Latvian</button>
+        <button onclick="applyTranslations('https://martinsdeveloper.github.io/lavander_site/translations/en.json')">English</button>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <script src="./index.js"></script> 
+        <p>&copy; 2024 Lavender Luxe. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="pinterest-icon.png" alt="Pinterest"></a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #4A4A4A;
+    /* background-color: #F9F9F9; */
+    /* background-color: #a3d09f; */
+    background: repeating-linear-gradient( 45deg, #a3d09f, #a3d09f 1px, #FFF9FF 1px, #FFF9FF 2px ) !important;
+
+}
+
+body section {
+    /* background-color: #a3d09f; */
+}
+/* Hero Section */
+.hero {
+    background-color: #83b786;
+    /* background: url('lavender-field.jpg') no-repeat center center/cover; */
+    background: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages6.fanpop.com%2Fimage%2Fphotos%2F34500000%2FPurple-Lavender-colors-34532015-1280-800.jpg&f=1&nofb=1&ipt=bceee885a77acc58ece5e5774f65d9ddb1dc6de8610fe07eb00275446c911425&ipo=images') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.hero-buttons .btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.btn.primary {
+    background-color: #C9A0DC;
+    color: white;
+    padding: 5px;
+}
+
+.btn.secondary {
+    background-color: white;
+    color: #C9A0DC;
+    border: 2px solid #C9A0DC;
+}
+
+/* Featured Products */
+.featured-products {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.featured-products h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+div.product button {
+    border-radius: 12px 0px;
+}
+div.product button:hover {
+    background-color: #BB84D5;
+}
+
+
+.product {
+    background: white;
+    /* border: 1px solid #E0E0E0; */
+    border: 2px solid rgb(114, 202, 120);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 12px 12px 12px rgba(1, 0, 0, 0.3);
+}
+
+.product:hover {
+    border-color: transparent;
+    box-shadow: 1px 1px 1px rgba(1, 0, 0, 0.3);
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product h3 {
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+
+.product p {
+    color: #C9A0DC;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* About Us Section */
+.about-us {
+    padding: 50px 20px;
+    /* background-color: #a3d09f; */
+    /* background-color: #FFF9FF; */
+    /* background: repeating-linear-gradient( 45deg, #a3d09f, #a3d09f 1px, #FFF9FF 1px, #FFF9FF 2px ) !important; */
+    text-align: center;
+}
+
+.about-us h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #4A4A4A;
+    color: white;
+}
+
+.social-icons img {
+    width: 25px;
+    margin: 0 10px;
+}
