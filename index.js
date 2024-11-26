@@ -1,5 +1,8 @@
-function fillProducts(products){
-    console.log(products);
+async function fillProducts(products){
+    const template = document.querySelector("div.products-grid div.template")
+    products.forEach((e) => {
+        console.log(e);
+    });
 }
 async function applyTranslations(languageFile) {
     try {
