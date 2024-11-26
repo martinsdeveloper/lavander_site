@@ -1,3 +1,6 @@
+function fillProducts(products){
+    console.log(products);
+}
 async function applyTranslations(languageFile) {
     try {
         // Fetch translations from the JSON file
@@ -11,6 +14,7 @@ async function applyTranslations(languageFile) {
                 element.textContent = translations[key];
             }
         });
+        fillProducts(translations["products"]);
     } catch (error) {
         console.error("Error loading translations:", error);
     }

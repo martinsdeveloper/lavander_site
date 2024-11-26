@@ -1,8 +1,17 @@
 {
     "about_us": "About us",
     "about_us_body": "We are located in the west of Latvia and making products of own grown lavander",
+    "add_to_cart": "Add to cart",
     "discover_our_products": "Explore our range of natural lavender products crafted with care.",
     "our_production": "Our products",
+    "products": [
+        {
+            "id": 1,
+            "title": "Candle",
+            "price": "2.4",
+            "image_url": "https://asd.lv"
+        }
+    ],
     "shop_now": "Shop now",
     "website_copy": "2024 Marsilu Lavender. All Rights Reserved.",
     "website_title": "Mārsilu Lavandas"

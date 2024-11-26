@@ -1,8 +1,18 @@
 {
     "about_us": "Par Mums",
     "about_us_body": "Atrodamies Dienvidkurzemes novada Dubeņu pagastā un produktus ražojam no pašu audzētām lavandām",
+    "add_to_cart": "Pievienot grozam",
     "discover_our_products": "Apskatiet mūsu produktus",
     "our_production": "Mūsu produkti",
+    "products": [
+        {
+            "id": 1,
+            "title": "Svece",
+            "price": "2.4",
+            "image_url": "https://asd.lv",
+            "alt": "candle"
+        }
+    ],
     "shop_now": "Iepirkties",
     "website_copy": "2024 Mārsilu Lavandas",
     "website_title": "Mārsilu Lavandas"
