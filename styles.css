@@ -51,6 +51,10 @@ body section {
     font-weight: bold;
 }
 
+.hero-buttons img.lang_change{
+    height: 30px;
+}
+
 .btn.primary {
     background-color: #C9A0DC;
     color: white;
