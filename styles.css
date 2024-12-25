@@ -23,7 +23,16 @@ body section {
 .hero {
     background-color: #83b786;
     /* background: url('lavender-field.jpg') no-repeat center center/cover; */
-    background: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages6.fanpop.com%2Fimage%2Fphotos%2F34500000%2FPurple-Lavender-colors-34532015-1280-800.jpg&f=1&nofb=1&ipt=bceee885a77acc58ece5e5774f65d9ddb1dc6de8610fe07eb00275446c911425&ipo=images') no-repeat center center/cover;
+    /* background: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages6.fanpop.com%2Fimage%2Fphotos%2F34500000%2FPurple-Lavender-colors-34532015-1280-800.jpg&f=1&nofb=1&ipt=bceee885a77acc58ece5e5774f65d9ddb1dc6de8610fe07eb00275446c911425&ipo=images') no-repeat center center/cover; */
+
+
+    background: 
+    linear-gradient(
+      rgba(53, 4, 82, 0.75), 
+      rgba(0, 109, 27, 0.45)
+    ),
+    /* bottom, image */
+    url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages6.fanpop.com%2Fimage%2Fphotos%2F34500000%2FPurple-Lavender-colors-34532015-1280-800.jpg&f=1&nofb=1&ipt=bceee885a77acc58ece5e5774f65d9ddb1dc6de8610fe07eb00275446c911425&ipo=images') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     align-items: center;

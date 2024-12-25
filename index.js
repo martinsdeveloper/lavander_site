@@ -4,9 +4,12 @@ async function fillProducts(products){
         template = template_h.cloneNode(true)
         template.querySelector("h3.name").textContent = product.title;
         template.querySelector("p.price").textContent = "€" + product.price;
+        template.querySelector("span.description").textContent = product.description;
         template.querySelector("img").setAttribute("src", product.image_url);
         template.querySelector("img").setAttribute("alt", product.alt);
         template.querySelector("button.primary").setAttribute("product_id", product.id);
+
+        
         template.classList.remove("template");
         template.removeAttribute("hidden");
         template_h.parentElement.appendChild(template);
