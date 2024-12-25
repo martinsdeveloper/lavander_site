@@ -10,7 +10,18 @@
             "title": "Svece",
             "price": "2.4",
             "image_url": "https://asd.lv",
-            "alt": "candle"
+            "alt": "candle",
+            "description": "Vaska svece",
+            "content": "Vasks"
+        },
+        {
+            "id": 2,
+            "title": "Skrubis",
+            "price": "2.4",
+            "image_url": "https://asd.lv",
+            "alt": "candle",
+            "description": "Skrubis pirtij un dušai",
+            "content": "Cukurs, medus, lavanda"
         }
     ],
     "shop_now": "Iepirkties",
