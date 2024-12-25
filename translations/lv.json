@@ -22,6 +22,24 @@
             "alt": "candle",
             "description": "Skrubis pirtij un dušai",
             "content": "Cukurs, medus, lavanda"
+        },
+        {
+            "id": 3,
+            "title": "Skrubis",
+            "price": "2.4",
+            "image_url": "https://asd.lv",
+            "alt": "candle",
+            "description": "Skrubis pirtij un dušai",
+            "content": "Cukurs, medus, lavanda"
+        },
+        {
+            "id": 4,
+            "title": "Skrubis",
+            "price": "2.4",
+            "image_url": "https://asd.lv",
+            "alt": "candle",
+            "description": "Skrubis pirtij un dušai",
+            "content": "Cukurs, medus, lavanda"
         }
     ],
     "shop_now": "Iepirkties",
