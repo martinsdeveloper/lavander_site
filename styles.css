@@ -10,8 +10,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #4A4A4A;
-    /* background-color: #F9F9F9; */
-    /* background-color: #a3d09f; */
     background: repeating-linear-gradient( 45deg, #a3d09f, #a3d09f 1px, #FFF9FF 1px, #FFF9FF 2px ) !important;
 
 }

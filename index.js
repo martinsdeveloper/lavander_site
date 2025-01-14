@@ -30,10 +30,23 @@ async function applyTranslations(languageFile) {
             }
         });
         fillProducts(translations["products"]);
+        setupBasket();
+
         return translations["products"];
     } catch (error) {
         console.error("Error loading translations:", error);
     }
+
+}
+
+async function setupBasket(){
+    Array.from(document.getElementsByClassName("add_to_cart")).forEach((bu) => {
+        bu.addEventListener("click", (a) => {
+            var productDiv = a.target.closest("div.product");
+            console.log(productDiv.querySelector("h3.name").textContent + "(" + productDiv.querySelector("span.description").textContent + ")");
+            document.querySelector("button.checkout").parentElement.prepend("<p>" + productDiv.querySelector("h3.name").textContent + "(" + productDiv.querySelector("span.description").textContent + ")"+  "</p>")
+        })
+    });
 }
 
 // Load Latvian translations on page load
