@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-text">
@@ -35,10 +38,12 @@
                 <span class="description"></span>
                 <p class="price">$25.00</p>
                 <button class="btn primary add_to_cart" data-translate="add_to_cart"></button>
+                <button class="btn primary remove_from_cart" data-translate="remove_from_cart"></button>
             </div>
         </div>
     </section>
-    <section class="featured-products">
+    <section class="featured-products featured_product_list">
+        <div class="product_list"></div>
         <div class="products-grid">
             <button  class="btn primary checkout"  data-translate="checkout">Checkout</button>
         </div>
@@ -52,6 +57,7 @@
 
     <!-- Footer -->
     <footer>
+        <span class="order template" data-translate="order"></span>
         <script src="./index.js"></script> 
         <p data-translate="website_copy"></p>
         <div class="social-icons">

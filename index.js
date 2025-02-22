@@ -1,5 +1,6 @@
 async function fillProducts(products){
-    const template_h = document.querySelector("div.products-grid div.template")
+    clear_board();
+    const template_h = document.querySelector("div.products-grid div.template");
     products.forEach((product) => {
         template = template_h.cloneNode(true)
         template.querySelector("h3.name").textContent = product.title;
@@ -39,17 +40,67 @@ async function applyTranslations(languageFile) {
 
 }
 
+async function clear_board(){
+    document.querySelectorAll("div.products-grid div:not(.template)").forEach((x)=>{
+        x.remove()
+    });
+
+}
 async function setupBasket(){
     Array.from(document.getElementsByClassName("add_to_cart")).forEach((bu) => {
         bu.addEventListener("click", (a) => {
             var productDiv = a.target.closest("div.product");
-            console.log(productDiv.querySelector("h3.name").textContent + "(" + productDiv.querySelector("span.description").textContent + ")");
-            document.querySelector("button.checkout").parentElement.prepend("<p>" + productDiv.querySelector("h3.name").textContent + "(" + productDiv.querySelector("span.description").textContent + ")"+  "</p>")
+            if(document.querySelector('p[prod_name="'+productDiv.querySelector("h3.name").textContent+'"]')){
+                p = document.querySelector('p[prod_name="'+productDiv.querySelector("h3.name").textContent+'"]');
+                p.setAttribute("prod_count", parseInt(p.getAttribute("prod_count"))+1)
+                p.textContent = productDiv.querySelector("h3.name").textContent + "(" + productDiv.querySelector("span.description").textContent + ")" + p.getAttribute("prod_count");
+                
+                document.querySelector("div.product_list").appendChild(p);
+            }else{
+                p = document.createElement("p");
+                p.setAttribute("prod_name", productDiv.querySelector("h3.name").textContent)
+                p.setAttribute("prod_count", 1)
+                p.textContent = productDiv.querySelector("h3.name").textContent + "(" + productDiv.querySelector("span.description").textContent + ")" + p.getAttribute("prod_count");
+                document.querySelector("div.product_list").appendChild(p);
+            }
         })
     });
+
+    Array.from(document.getElementsByClassName("remove_from_cart")).forEach((bu) => {
+        bu.addEventListener("click", (a) => {
+            var productDiv = a.target.closest("div.product");
+            if(document.querySelector('p[prod_name="'+productDiv.querySelector("h3.name").textContent+'"]')){
+                document.querySelector('p[prod_name="'+productDiv.querySelector("h3.name").textContent+'"]').remove();
+            }
+        })
+    });
+}
+
+async function checkout(){
+    document.querySelector("button.checkout").addEventListener("click", (c) => {
+        var l = [];
+        document.querySelectorAll("div.product_list p").forEach((row) => {
+            l.push(row.textContent);
+        });
+        sendMail(l.join("\n"));
+    });
+}
+function sendMail(body)
+{
+    var order = document.querySelector("footer span.order").textContent;
+    document.location.href = "mailto:martins9436@gmail.com?subject="
+        + order
+        + "&body=" + encodeURIComponent(body);
 }
 
 // Load Latvian translations on page load
 document.addEventListener("DOMContentLoaded", () => {
     applyTranslations("https://martinsdeveloper.github.io/lavander_site/translations/lv.json");
+    checkout()
 });
+
+window.onload = function() {
+    // Hide the loading screen
+    document.getElementById("loading-screen").style.display = "none";
+    
+};
