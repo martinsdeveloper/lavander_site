@@ -15,6 +15,14 @@
         }
     ],
     "shop_now": "Shop now",
+    "view_details": "View Details",
+    "total_price": "Total Price",
     "website_copy": "2024 Marsilu Lavender. All Rights Reserved.",
-    "website_title": "Mārsilu Lavandas"
+    "website_title": "Mārsilu Lavandas",
+    "product_name": "Product Name",
+    "quantity": "Quantity",
+    "price": "Price",
+    "total": "Total",
+    "actions": "Actions",
+    "clear_cart": "Clear Cart"
 }

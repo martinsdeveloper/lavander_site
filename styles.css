@@ -135,6 +135,18 @@ div.product button:hover {
     margin-bottom: 10px;
 }
 
+.product input.quantity {
+    width: 50px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.total_price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
 /* About Us Section */
 .about-us {
     padding: 50px 20px;
@@ -201,4 +213,30 @@ footer {
 #content {
     text-align: center;
     margin-top: 20px;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.cart-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.checkout-summary {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.checkout-summary .btn {
+    margin-left: 10px;
 }

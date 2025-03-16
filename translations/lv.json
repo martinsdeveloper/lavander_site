@@ -44,6 +44,14 @@
         }
     ],
     "shop_now": "Iepirkties",
+    "view_details": "Skatīt detaļas",
+    "total_price": "Kopējā cena",
     "website_copy": "2024 Mārsilu Lavandas",
-    "website_title": "Mārsilu Lavandas"
+    "website_title": "Mārsilu Lavandas",
+    "product_name": "Produkta nosaukums",
+    "quantity": "Daudzums",
+    "price": "Cena",
+    "total": "Kopā",
+    "actions": "Darbības",
+    "clear_cart": "Notīrīt grozu"
 }

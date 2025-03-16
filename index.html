@@ -37,15 +37,32 @@
                 <h3 class="name">Lavender Oil</h3>
                 <span class="description"></span>
                 <p class="price">$25.00</p>
+                <input type="number" class="quantity" value="1" min="1">
                 <button class="btn primary add_to_cart" data-translate="add_to_cart"></button>
                 <button class="btn primary remove_from_cart" data-translate="remove_from_cart"></button>
+                <button class="btn secondary view_details" data-translate="view_details">View Details</button>
             </div>
         </div>
     </section>
     <section class="featured-products featured_product_list">
-        <div class="product_list"></div>
-        <div class="products-grid">
-            <button  class="btn primary checkout"  data-translate="checkout">Checkout</button>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th data-translate="product_name">Product Name</th>
+                    <th data-translate="quantity">Quantity</th>
+                    <th data-translate="price">Price</th>
+                    <th data-translate="total">Total</th>
+                    <th data-translate="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="product_list">
+                <!-- Cart items will be dynamically added here -->
+            </tbody>
+        </table>
+        <div class="checkout-summary">
+            <p class="total_price" data-translate="total_price">Total: €0.00</p>
+            <button class="btn primary checkout" data-translate="checkout">Checkout</button>
+            <button class="btn secondary clear_cart" data-translate="clear_cart">Clear Cart</button>
         </div>
     </section>
 
