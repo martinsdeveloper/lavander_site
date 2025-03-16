@@ -111,10 +111,17 @@ body section {
 }
 
 div.product button {
+    display: inline-block;
     border-radius: 15px;
     padding: 10px 15px;
     font-size: 0.9rem;
     transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 5px 0; /* Add spacing between buttons */
+}
+
+div.product .view_details {
+    display: block; /* Place "View Details" button on a new line */
+    margin-top: 10px;
 }
 
 div.product button:hover {
@@ -123,6 +130,7 @@ div.product button:hover {
 }
 
 .product {
+    position: relative; /* Enable positioning for child elements */
     background: white;
     border: 1px solid #E0E0E0;
     border-radius: 15px;
@@ -130,6 +138,28 @@ div.product button:hover {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product .remove_from_cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product .remove_from_cart:hover {
+    background-color: #FF4C4C;
 }
 
 .product:hover {
@@ -164,6 +194,12 @@ div.product button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 5px;
+    appearance: textfield; /* Ensure consistent styling across browsers */
+}
+
+.product input.quantity::-webkit-inner-spin-button,
+.product input.quantity::-webkit-outer-spin-button {
+    appearance: none; /* Hide spin buttons for better control */
 }
 
 .total_price {
