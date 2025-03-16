@@ -53,5 +53,7 @@
     "price": "Cena",
     "total": "Kopā",
     "actions": "Darbības",
-    "clear_cart": "Notīrīt grozu"
+    "clear_cart": "Notīrīt grozu",
+    "checkout": "Pasūtīt",
+
 }

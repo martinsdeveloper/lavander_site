@@ -24,5 +24,6 @@
     "price": "Price",
     "total": "Total",
     "actions": "Actions",
-    "clear_cart": "Clear Cart"
+    "clear_cart": "Clear Cart",
+    "checkout": "Checkout",
 }
