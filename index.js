@@ -18,7 +18,6 @@ async function fillProducts(products){
         template.classList.remove("template");
         template.removeAttribute("hidden");
         template_h.parentElement.appendChild(template);
-        console.log(product);
     });
 }
 async function applyTranslations(languageFile) {
@@ -50,18 +49,16 @@ async function clear_board(){
     });
 
 }
-async function update_prouct_amount(a, quantity_val="1", total){
+async function update_product_amount(a, quantity_val="1", total){
     if(quantity_val === ""){
         quantity_val = "0";
     }
-    const productDiv = a.target.closest("div.product");
+    const productDiv = a.closest("div.product");
     const productName = productDiv.querySelector("h3.name").textContent;
     const productPrice = parseFloat(productDiv.querySelector("p.price").textContent.replace("€", ""));
     const quantityNode = productDiv.querySelector("input.quantity");
     const quantity = parseInt(quantity_val);
-    console.log(total);
     if(total==true){
-        console.log(parseInt(quantity));
         quantityNode.value = parseInt(quantity);
 
     }else{
@@ -98,19 +95,26 @@ async function update_prouct_amount(a, quantity_val="1", total){
 async function setupBasket() {
     Array.from(document.getElementsByClassName("add_to_cart")).forEach((bu) => {
         bu.addEventListener("click", (a) => {
-            update_prouct_amount(a, '1', false);
+            update_product_amount(a.target, '1', false);
         });
     });
 
     Array.from(document.getElementsByClassName("quantity")).forEach((bu) => {
         bu.addEventListener("keyup", (a) => {
-            update_prouct_amount(a, a.target.value, true);
+            update_product_amount(a.target, a.target.value, true);
         });
     });
 
     document.querySelector(".clear_cart").addEventListener("click", () => {
-        document.querySelector("tbody.product_list").innerHTML = "";
+        // document.querySelector("tbody.product_list").innerHTML = "";
+        Array.from(document.querySelectorAll("div.product input.quantity")).forEach((x)=>{
+            update_product_amount(x, '0', true);
+        });
+
         updateTotalPrice();
+        document.querySelectorAll(".product_list tr").forEach((x) => {
+            x.remove();
+        });
     });
 }
 
