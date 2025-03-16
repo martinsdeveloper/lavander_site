@@ -80,10 +80,13 @@ async function update_prouct_amount(a, quantity_val="1", total){
             <td class="cart-quantity">${quantity}</td>
             <td>€${productPrice.toFixed(2)}</td>
             <td class="cart-total">€${(quantity * productPrice).toFixed(2)}</td>
-            <td><button class="btn secondary remove_item" data-translate="remove_from_cart">X</button></td>
+            <td><button class="btn secondary remove_item" data-translate="remove_from_cart"><i class="fa fa-trash"></i></button></td>
         `;
         document.querySelector("tbody.product_list").appendChild(cartRow);
         cartRow.querySelector(".remove_item").addEventListener("click", () => {
+
+            const card_arr = [...document.querySelectorAll("div.product h3.name")].find(el => el.textContent.trim() === productName);
+            card_arr.closest(".product").getElementsByClassName("quantity")[0].value = 0;
             cartRow.remove();
             updateTotalPrice();
         });
@@ -138,8 +141,14 @@ function sendMail(body)
 
 // Load Latvian translations on page load
 document.addEventListener("DOMContentLoaded", () => {
+    // Add Font Awesome stylesheet for icons
+    const fontAwesomeLink = document.createElement("link");
+    fontAwesomeLink.rel = "stylesheet";
+    fontAwesomeLink.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
+    document.head.appendChild(fontAwesomeLink);
+
     applyTranslations("https://martinsdeveloper.github.io/lavander_site/translations/lv.json");
-    checkout()
+    checkout();
 });
 
 window.onload = function() {
