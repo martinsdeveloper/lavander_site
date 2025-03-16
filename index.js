@@ -6,8 +6,12 @@ async function fillProducts(products){
         template.querySelector("h3.name").textContent = product.title;
         template.querySelector("p.price").textContent = "€" + product.price;
         template.querySelector("span.description").textContent = product.description;
-        template.querySelector("img").setAttribute("src", product.image_url);
-        template.querySelector("img").setAttribute("alt", product.alt);
+        const imgElement = template.querySelector("img");
+        imgElement.setAttribute("src", product.image_url);
+        imgElement.setAttribute("alt", product.alt);
+        imgElement.onerror = () => {
+            imgElement.setAttribute("src", "image-not-found.jpeg");
+        };
         template.querySelector("button.primary").setAttribute("product_id", product.id);
 
         

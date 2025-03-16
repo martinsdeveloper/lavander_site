@@ -50,6 +50,21 @@ body section {
     margin-bottom: 30px;
 }
 
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.hero-buttons p {
+    margin: 0;
+}
+
+.hero-buttons img.lang_change {
+    margin: 0 5px;
+}
+
 .hero-buttons .btn {
     padding: 10px 20px;
     text-decoration: none;
