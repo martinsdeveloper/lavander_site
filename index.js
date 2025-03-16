@@ -1,71 +1,59 @@
-async function fillProducts(products){
-    clear_board();
-    const template_h = document.querySelector("div.products-grid div.template");
+const fillProducts = (products) => {
+    clearBoard();
+    const templateH = document.querySelector("div.products-grid div.template");
     products.forEach((product) => {
-        template = template_h.cloneNode(true)
+        const template = templateH.cloneNode(true);
         template.querySelector("h3.name").textContent = product.title;
-        template.querySelector("p.price").textContent = "€" + product.price;
+        template.querySelector("p.price").textContent = `€${product.price}`;
         template.querySelector("span.description").textContent = product.description;
         const imgElement = template.querySelector("img");
-        imgElement.setAttribute("src", product.image_url);
-        imgElement.setAttribute("alt", product.alt);
+        imgElement.src = product.image_url;
+        imgElement.alt = product.alt;
         imgElement.onerror = () => {
-            imgElement.setAttribute("src", "image-not-found.jpeg");
+            imgElement.src = "image-not-found.jpeg";
         };
         template.querySelector("button.primary").setAttribute("product_id", product.id);
 
-        
         template.classList.remove("template");
         template.removeAttribute("hidden");
-        template_h.parentElement.appendChild(template);
+        templateH.parentElement.appendChild(template);
     });
-}
-async function applyTranslations(languageFile) {
+};
+
+const applyTranslations = async (languageFile) => {
     try {
-        // Fetch translations from the JSON file
         const response = await fetch(languageFile);
         const translations = await response.json();
 
-        // Map translations to elements using data attributes
         document.querySelectorAll("[data-translate]").forEach((element) => {
             const key = element.getAttribute("data-translate");
             if (translations[key]) {
                 element.textContent = translations[key];
             }
         });
-        fillProducts(translations["products"]);
+        fillProducts(translations.products);
         setupBasket();
 
-        return translations["products"];
+        return translations.products;
     } catch (error) {
         console.error("Error loading translations:", error);
     }
+};
 
-}
+const clearBoard = () => {
+    document.querySelectorAll("div.products-grid div:not(.template)").forEach((x) => x.remove());
+};
 
-async function clear_board(){
-    document.querySelectorAll("div.products-grid div:not(.template)").forEach((x)=>{
-        x.remove()
-    });
-
-}
-async function update_product_amount(a, quantity_val="1", total){
-    if(quantity_val === ""){
-        quantity_val = "0";
-    }
-    const productDiv = a.closest("div.product");
+const updateProductAmount = (element, quantityVal = "1", total) => {
+    const productDiv = element.closest("div.product");
     const productName = productDiv.querySelector("h3.name").textContent;
     const productPrice = parseFloat(productDiv.querySelector("p.price").textContent.replace("€", ""));
     const quantityNode = productDiv.querySelector("input.quantity");
-    const quantity = parseInt(quantity_val);
-    if(total==true){
-        quantityNode.value = parseInt(quantity);
+    const quantity = parseInt(quantityVal || "0");
 
-    }else{
-        quantityNode.value = parseInt(quantityNode.value)+quantity;
-    }
+    quantityNode.value = total ? quantity : parseInt(quantityNode.value) + quantity;
+
     let cartRow = document.querySelector(`tr[prod_name="${productName}"]`);
-
     if (cartRow) {
         cartRow.querySelector(".cart-quantity").textContent = quantityNode.value;
         cartRow.querySelector(".cart-total").textContent = `€${(quantityNode.value * productPrice).toFixed(2)}`;
@@ -81,71 +69,70 @@ async function update_product_amount(a, quantity_val="1", total){
         `;
         document.querySelector("tbody.product_list").appendChild(cartRow);
         cartRow.querySelector(".remove_item").addEventListener("click", () => {
-
-            const card_arr = [...document.querySelectorAll("div.product h3.name")].find(el => el.textContent.trim() === productName);
-            card_arr.closest(".product").getElementsByClassName("quantity")[0].value = 0;
+            const cardArr = [...document.querySelectorAll("div.product h3.name")].find(el => el.textContent.trim() === productName);
+            cardArr.closest(".product").querySelector(".quantity").value = 0;
             cartRow.remove();
             updateTotalPrice();
         });
     }
     updateTotalPrice();
+};
 
-}
-
-async function setupBasket() {
-    Array.from(document.getElementsByClassName("add_to_cart")).forEach((bu) => {
-        bu.addEventListener("click", (a) => {
-            update_product_amount(a.target, '1', false);
+const setupBasket = () => {
+    document.querySelectorAll(".add_to_cart").forEach((button) => {
+        button.addEventListener("click", (event) => {
+            updateProductAmount(event.target, "1", false);
         });
     });
 
-    Array.from(document.getElementsByClassName("quantity")).forEach((bu) => {
-        bu.addEventListener("keyup", (a) => {
-            update_product_amount(a.target, a.target.value, true);
+    document.querySelectorAll(".quantity").forEach((input) => {
+        input.addEventListener("keyup", (event) => {
+            updateProductAmount(event.target, event.target.value, true);
         });
     });
 
     document.querySelector(".clear_cart").addEventListener("click", () => {
-        // document.querySelector("tbody.product_list").innerHTML = "";
-        Array.from(document.querySelectorAll("div.product input.quantity")).forEach((x)=>{
-            update_product_amount(x, '0', true);
+        document.querySelectorAll("div.product input.quantity").forEach((input) => {
+            updateProductAmount(input, "0", true);
         });
 
         updateTotalPrice();
-        document.querySelectorAll(".product_list tr").forEach((x) => {
-            x.remove();
-        });
+        document.querySelectorAll(".product_list tr").forEach((row) => row.remove());
     });
-}
+};
 
-function updateTotalPrice() {
-    let total = 0;
-    document.querySelectorAll("tbody.product_list tr").forEach((row) => {
-        const totalCell = row.querySelector(".cart-total").textContent.replace("€", "");
-        total += parseFloat(totalCell);
-    });
+const updateTotalPrice = () => {
+    const total = [...document.querySelectorAll("tbody.product_list tr")].reduce((sum, row) => {
+        const totalCell = parseFloat(row.querySelector(".cart-total").textContent.replace("€", ""));
+        return sum + totalCell;
+    }, 0);
     document.querySelector("p.total_price").textContent = `Total: €${total.toFixed(2)}`;
-}
+};
 
-async function checkout(){
-    document.querySelector("button.checkout").addEventListener("click", (c) => {
-        var l = [];
-        document.querySelectorAll("div.product_list p").forEach((row) => {
-            l.push(row.textContent);
+const checkout = () => {
+    document.querySelector("button.checkout").addEventListener("click", () => {
+        const items = [...document.querySelectorAll("div.product_list p")].map(row => row.textContent);
+        // sendMail(items.join("\n"));
+        var text = "";
+        document.querySelectorAll(".featured_product_list tr").forEach((f) => {
+            f.querySelectorAll("td").forEach((x, index, array) => {
+                if (index !== array.length - 1) { // Skip the last td
+                    text += x.innerHTML;
+                }
+            });
+            text += "\n";
         });
-        sendMail(l.join("\n"));
+        sendMail(text);
     });
-}
-function sendMail(body)
-{
+};
+
+const sendMail = (body) => {
     const order = document.querySelector("footer span.order").textContent;
     const total = document.querySelector("p.total_price").textContent;
-    document.location.href = `mailto:martins9436@gmail.com?subject=${order}&body=${encodeURIComponent(body + "\n" + total)}`;
-}
+    document.location.href = `mailto:martins9436@gmail.com?subject=${order}&body=${encodeURIComponent(`${body}\n${total}`)}`;
+};
 
-// Load Latvian translations on page load
 document.addEventListener("DOMContentLoaded", () => {
-    // Add Font Awesome stylesheet for icons
     const fontAwesomeLink = document.createElement("link");
     fontAwesomeLink.rel = "stylesheet";
     fontAwesomeLink.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css";
@@ -155,8 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     checkout();
 });
 
-window.onload = function() {
-    // Hide the loading screen
+window.onload = () => {
     document.getElementById("loading-screen").style.display = "none";
-    
 };
